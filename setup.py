@@ -6,9 +6,6 @@ setup(
  version = __version__,
  description = __doc__,
  py_modules = ['urlfinder',],
- install_requires = [
-  'setuptools',
- ],
  classifiers = [
   'Development Status :: 3 - Alpha',
   'Intended Audience :: Developers',
