@@ -1,10 +1,11 @@
 import re
 
 __version__ = 0.1
-__doc__ = "Find URLs in a text string"""
+__doc__ = "Find URLs in a text string"
 
-url_re = re.compile("(?:\w+://|www\.)[^ ,.?!#%=+][^ ]*")
-bad_chars = '\'\\.,[](){}:;"'
+url_re = re.compile(r"(?:\w+://|www\.)[^ ,.?!#%=+][^ ]*")
+bad_chars = "'\\.,[](){}:;\""
 
-def find_urls (text):
- return [s.strip(bad_chars) for s in url_re.findall(text)]
+
+def find_urls(text):
+    return [s.strip(bad_chars) for s in url_re.findall(text)]
