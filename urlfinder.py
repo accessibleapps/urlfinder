@@ -3,7 +3,7 @@ import re
 __version__ = 0.1
 __doc__ = "Find URLs in a text string"
 
-url_re = re.compile(r"(?:\w+://|www\.)[^ ,.?!#%=+][^ ]*")
+url_re = re.compile(r"(?:\w+://|www\.)[^\s,.?!#%=+]\S*")
 bad_chars = "'\\.,[](){}:;\""
 
 
