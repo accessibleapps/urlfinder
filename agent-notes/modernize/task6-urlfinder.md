@@ -6,16 +6,24 @@ Preserve URL syntax/punctuation policy while ending a matched URL at whitespace,
 
 ## State
 
+- Existing draft PR #1: https://github.com/accessibleapps/urlfinder/pull/1, originally published at d1a984ed8b569ce7cd96e79512523cadb751c1d8. Fresh master remains baddff642fbdd3b817881a1f4203dcc100fd1e34. Actions enabled=true verified read-only; prior disabled-Actions blocker is resolved without a worker settings change.
+- CI amendment isolated at worktrees/urlfinder-ci, branch repair/task6-urlfinder-ci; original local/published tips retained separately as archive/task6-urlfinder-ci-local and archive/task6-urlfinder-ci-published. Preserve original feature bytecode and canonical untracked uv.lock; no user file reset/move/cleanup.
+- Smallest CI slice: one Linux workflow runs the complete existing three-method stdlib unittest suite and Hatchling package build on supported-minimum Python 3.8 and current 3.13, plus six-line monthly action-pin maintenance and this existing-note refresh. No source/test/manifest/dependency/support change and no tracked lock added. Only stdlib re/unittest are needed for tests; no dependency install or service access.
+- Workflow uses verified pinned actions/uv, contents:read, no persisted credentials/cache, bounded timeout and workflow/ref cancellation. No local full CI, model call, live network test, publication or settings change in this amendment.
+- Authored YAML passed actionlint v1.7.12 and offline zizmor v1.31.1 with no findings; diff whitespace/source preservation checks pass. Hosted outcomes and actual Claude review remain pending publication; prior local regression results below are historical.
+
+### Historical initial feature state
+
 - Exact public accessibleapps/urlfinder, origin `git@github.com:accessibleapps/urlfinder.git`, fresh master/base `baddff642fbdd3b817881a1f4203dcc100fd1e34`, archived=false, fork=false, paginated open PRs empty.
 - Canonical tracked state clean; preserve unrelated untracked uv.lock. New isolated modernize/task6-urlfinder worktree created directly inside task root from verified base after absent-path check.
 - All tracked source/metadata and actual QCast caller read. No AGENTS/CLAUDE/task notes/tests/CI/README/authoritative lock tracked. Coordinator explicitly settled standalone owner and initial stdlib unittest suite command (`python -m unittest discover -s tests`); no prior command/CI claimed. No new dependency/workflow/topology or consumer pin changes.
 
-## Decisions and why
+## Initial decisions and why (historical)
 
 - urlfinder.py's `[^ ]*` consumes newline/tab/prose after a link. QCast `gui/dialogs.py::twitter_length` passes actual multiline TweetText content, subtracting the erroneous full match length as if prose were URL content.
 - Smallest fix: change only regex whitespace exclusions (~one source line); focused stdlib tests for real multiline text plus existing punctuation and scheme behavior. Preserve find_urls API and existing strip(bad_chars) policy, including current punctuation limitations.
 
-## Next step
+## Historical regression evidence
 
 Before source changes: Python 3.8.20 x64 `python -m unittest discover -s tests`, **3 tests / 5 failures**, covering newline/CRLF/tab/NBSP prose consumption and merged separate links. Ordinary-space and existing punctuation/scheme characterization pass. Applied one-line regex change excluding whitespace at both first character and remaining URL positions; no syntax or stripping-policy expansion.
 
@@ -26,3 +34,7 @@ Proposed PR title: Stop URL matches at whitespace.
 Proposed body: URL matches included newline-separated prose and could merge adjacent links, causing callers such as QCast's message-length calculation to treat ordinary text as part of a URL. Stop matches at whitespace while preserving existing URL syntax and punctuation stripping. Validation: three standard-library unittest cases pass on Python 3.8 and 3.10; the whitespace cases failed before the fix.
 
 Next: inspect/commit only source, stdlib test and this living note, return exact local patch for coordinator review before publication. No hosted CI exists; no remote publication before approval.
+
+## Next step
+
+Return the complete feature-derived CI/config/note amendment and exact local head for coordinator review before publication. Final published head requires actual Claude review and green hosted jobs before any merge. Preserve original feature/canonical worktrees and archives. No model call, local full CI, merge, support drop, settings/description edit or release here.
